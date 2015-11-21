@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block 'fullView' %}
+	
+	<div class="col-md-12 white_background">
+		<h1>{{message.title}}</h1>
+
+		<hr/>
+		<p><span class="{% if message.level == 0 %}  glyphicon glyphicon-flag
+									{% elif message.level == 1 %}  glyphicon glyphicon-ok
+									{% elif message.level == 2 %} glyphicon glyphicon-warning-sign
+									{% elif message.level == 3 %} glyphicon glyphicon-fire
+									{% else %} ? 
+									{% endif %} full-view-glyph"></span>{{message.text}}</p>
+		<p>Received: {{message.theDate}}</p>
+									
+	</div>
+
+{% endblock %}

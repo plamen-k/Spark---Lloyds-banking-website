@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block 'generateOutgoingTransaction' %}
+
+<p>All banking persons</p>
+{% for p in bankingAll %}
+	{{p}}
+{% endfor %}
+
+<p>Me</p>
+{{bankingPerson.ammount}}
+{% for a in bankingPerson.getAccounts %}
+	{{a.ammount}}
+{% endfor %}
+	
+{% endblock %}

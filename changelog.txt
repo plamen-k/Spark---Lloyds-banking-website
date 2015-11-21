@@ -1,0 +1,21 @@
+Changed the way the transfer function works in the model happens
+
+Changed the creation process, previously it generated a 16 digit number, but 00000000001 will be transalted to 1, made it so it also takes into consideration the length of the generated digit
+
+Implemented a generator app for automating test and debug functions
+
+Cleaned the view of code duplication
+
+Added segmented fields in the form
+
+Added base dictionary function for more DRY
+
+Changed the base template path outside of the account app
+
+https://github.com/viljamis/ResponsiveSlides.js
+
+Images from slideshow
+http://www.freeimages.com/photo/1386581
+http://www.freeimages.com/photo/1382187
+http://www.freeimages.com/photo/1382252
+http://www.freeimages.com/photo/1378568

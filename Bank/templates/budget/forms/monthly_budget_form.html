@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block 'monthly_budget_setup' %}
+<div class="col-md-12 white_background">
+
+  {% if formError %}
+<div class="alert alert-danger " role="alert">
+  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+  <span class="sr-only">Error:</span>
+      {% for i in formError %}
+        {{i}}
+      {% endfor %}
+  </div>
+
+  {% endif %}
+
+  <form action="{% url 'monthly_budget_setup' %}" method="POST">
+    {% csrf_token %}
+
+    {{form.as_p}}
+    <input type="submit" name="name" value="Start budgeting">
+  </form>
+</div>
+
+{% endblock %}

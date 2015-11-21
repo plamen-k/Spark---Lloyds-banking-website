@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block 'userSettings' %}
+    
+    <div class="col-md-12 white_background">
+    {% include "userprofile/settings_sidebar.html" %}
+        <div class="col-md-10">
+            
+        <form method='post'>
+        {% csrf_token %}
+            {{form.as_p}}
+            <input type='submit'/>
+        </form>
+        <!-- {{changedData}} -->
+        </div>
+
+    </div>
+{% endblock %}

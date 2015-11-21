@@ -1,0 +1,131 @@
+
+Website
+
+
+Basic
+* Login -- finished
+* Make transactions -- finished
+* View balance -- finished
+* Get statements -- finished
+* View products and offers from the bank -- finished
+* Notification system -- finished
+
+Intermediate
+* Personalisation of bank account name – instead of ‘123currentAccount’ have ‘General Spending’ etc. -- finishet
+* Ability to schedule payment
+* Personalisation
+* Breakdown of user spending
+* Spontaneous way to add money to saving (reserve) account by clicking on an icon
+* RSS feed -- finished
+
+
+Advanced
+* Reminder of close payment day
+* Ability to set aside money for future (e.g. laptop)
+* Money bar that will give overview of user’s money
+   * Schedule
+   * Free
+   * Reserve
+* Calendar where you’ll see everything – earning to upcoming bills.  (might not get implemented)
+* Interacting with bank staff
+* Help page and faq and questions to the bank
+
+SpendWell
+└Apps
+	└ Django.core
+	 | login();
+	 └ authenticate();
+
+	└ Payment
+	 | make_transaction();
+	 | view_outgoing_transactions();
+	 | view_incoming_transactions();
+	 | view_balance();
+	 | get_statement();
+	 └ schedule_payment();
+
+	└ General information
+	 | view_products_and_offers();
+	 └ index();
+
+	└ Notification
+	 | get_notification();
+	 | remind_close_payment_day();
+	 | view_notification();
+	 └ delete_notification();
+
+	└ FAQ
+	 | view_faq();
+	 | ask_question();
+	 | view_question();
+	 └ mark_question_answered();
+
+	└ Profile
+	 | change_password();
+	 | view_login_attempts_and_locations();
+	 | customize_page();
+	 └ view_profile();
+
+	└ Budget
+	 | budget_breakdown();
+	 | view_budget();
+	 | set_up_budget();
+	 | view_daily_budget();
+	 | add_remaining_cash_as_saved();
+
+	└ RSS feed
+	 | subscribe();
+	 └ email_notification_subscribe();
+
+	└ Calendar
+	 | add_to_calendar();
+	 | view_calendar();
+
+	└ Money bar
+	 | schedule();
+	 | view_free();
+	 | reserve();
+
+	└ Mascot
+	 | view_mood();
+	 | increase_mood();
+	 | decrease_mood();
+	 | get_mascot_advice();
+	 | close_advice();
+
+	└ Admin
+	 | control_panel()
+
+The website will remind you if the account is expiring which is a nice feature
+
+
+
+SpendWell Features
+App
+Basic
+* Check balance and handle transactions
+* Moving money to and from  personal accounts
+* Product information (account types, interest rates, etc.)
+* Sufficient security – log-in (username/email & password etc.)
+
+
+Intermediate
+* Give reminder of money you own to someone
+* Shake to check balance
+* achievement scheme
+* Alert user with new information about their account
+
+
+Advanced
+* Find nearest branch
+* Update preferences - personalisation
+   * Welcome back & name
+* Unique logging in – safe dial (turn left – turn right)
+* Interacting with friends (difficult)
+* Kitten mascot that is happy or sad when you manage things
+* if you go over a daily budget, the app will not punish you (change the karma - make kitten mascot sad- D: ) if you play a tedious game
+* when you do well a kitten image appears
+* when someone transfers money, a bar fills up and money sounds appear
+* When you send money to someone, the application makes you swipe pound bills of the top of the screen "make it rain fashion"
+* kitten might have a pop up with a suggestion or comment
+* the tedious actions might involve stroking the cat to calm it down

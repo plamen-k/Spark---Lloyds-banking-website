@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block 'budget_add_purchase_form' %}
+<div class="col-md-12 white_background">
+<h1>Add new purchase</h1>
+  {% if formError %}
+<div class="alert alert-danger " role="alert">
+  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+  <span class="sr-only">Error:</span>
+      {% for i in formError %}
+        {{i}}
+      {% endfor %}
+  </div>
+
+  {% endif %}
+
+  <form action="{% url 'budget_add_purchase' %}" method="POST">
+    {% csrf_token %}
+
+    {{form.as_p}}
+    <input type="submit" name="name" value="Add purchase">
+  </form>
+</div>
+
+{% endblock %}

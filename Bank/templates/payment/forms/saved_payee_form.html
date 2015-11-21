@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block 'saved_payee_form' %}
+    <div class="col-md-12 white_background">
+        <form method="POST" action="{% url 'save_to_payee' %}">
+            {% csrf_token %}
+            {{form.as_p}}
+            <input type="submit"/>
+        </form>
+
+    </div>
+{% endblock %}

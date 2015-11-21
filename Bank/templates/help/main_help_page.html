@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block 'main_help_page' %}
+	<div class="col-md-12 white_background">
+		{% for q in staticQuestions %}
+			<div class="faq_container">
+				<h1>{{q.question}}</h1>
+				<p>{{q.answer}}</p>
+			</div>
+		{% endfor %}
+        <hr/>
+
+        <form action="{% url 'help_main' %}" method="POST">
+        {% csrf_token %}
+        	{{form.as_p}}
+        	<input type="submit" value="ASK"/>
+        </form>
+	</div>
+{% endblock %}

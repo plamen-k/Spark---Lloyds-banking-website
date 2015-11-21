@@ -1,0 +1,175 @@
+{% extends 'base.html' %}
+
+{% block 'sendMoney' %}
+	{# This is the form responsible for sending money #}
+	{# uses the sendMoney url which is in account.urls #}
+	<div class="col-md-12 white_background">
+	<h1>Transfer money</h1>
+	<hr/>
+		<div class="col-md-6">
+			<p>Someone new</p>
+			<div class="form_container">
+
+                <a href="{% url 'save_to_payee' %}">Add to payee list</a>
+
+				<form action="{% url 'sendMoney' %}" method="post" class="col-md-12 payment_form">
+					{% csrf_token %} {# a 100% must have token for the django security functions #}
+					{# you can also iterate for item in form, but just printing the form displays it properly. It is populated using the account.form classes #}
+					{% for error in formError %} {# the error message are set from within the view in accounts #}
+						<div class="alert alert-danger">
+							<p>{{error}}</p>
+						</div>
+					{% endfor %}
+
+					<div class="col-md-12 payment_fields_div_container">
+						<span class="col-md-4">Name:</span>
+						<div class="col-md-8">{{form.toName}}</div>
+					</div>
+
+					<div class="col-md-12 payment_fields_div_container">
+						<span class="col-md-4">Account IBAN:</span>
+						<div class="col-md-8">{{form.toIban}}</div>
+					</div>
+
+					<div class="col-md-12 payment_fields_div_container">
+						<span class="col-md-4">Sort-Code:</span>
+						<div class="col-md-8">{{form.toSortCode}}</div>
+					</div>
+
+					<div class="col-md-12 payment_fields_div_container">
+						<span class="col-md-4">From account:</span>
+						<div class="col-md-8">{{form.account}}</div>
+					</div>
+
+					<div class="col-md-12 payment_fields_div_container">
+						<span class="col-md-4">Description:</span>
+						<div class="col-md-8">{{form.description}}</div>
+					</div>
+
+					<div class="col-md-12 payment_fields_div_container">
+						<span class="col-md-4">Amount:</span>
+						<div class="col-md-8">{{form.amount}}</div>
+					</div>
+
+					<div class="col-md-12 payment_fields_div_container">
+
+
+
+					</div>
+
+					<div class="col-md-12 payment_fields_div_container">
+						<span class="col-md-4">Pay:</span><div class="col-md-2"><input class="jquery_pressed_handler_hide" type="radio" checked=checked name="pay_when" value='now' /></div>
+
+						<div class="col-md-4 pull-right">
+							<input style="color:white" class="col-md-6 transaction_submit_button jquery_pressed_handler_show" type="submit" value="Transfer" />
+						</div>
+
+					</div>
+
+				</form>
+
+				</div>
+		</div>
+		<div class="col-md-6">
+			<p>Payee list</p>
+			<div class="payee_list_container">
+				<ul>
+
+					{% for payee in payeeList %}
+					<script>
+					var name = ".{{payee.name}}";
+					
+					$(document).on('click', name, function(name){ 
+					     var payeename = $(this).children(".payee_name").text();
+					     var payeeiban = $(this).children(".payee_iban").text();
+					     var payeesort = $(this).children(".payee_sort").text();
+
+					     $("#id_toName").val(payeename);
+					     $("#id_toIban").val(payeeiban);
+					     $("#id_toSortCode").val(payeesort);
+					 });
+
+					</script>
+						<div class="{{payee.name}}">
+							<p class="payee_name">{{payee.name}}</p>
+							<p class="payee_iban">{{payee.iban}}</p>
+							<p class="payee_sort">{{payee.sortCode}}</p>
+							<hr/>
+						</div>
+
+					{% endfor %}
+				</ul>
+			</div>
+
+
+		</div>
+
+	</div>
+
+<script charset="utf-8">
+	$(document).ready(function(){
+
+
+    function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie != '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = jQuery.trim(cookies[i]);
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}var csrftoken = getCookie('csrftoken');
+
+function csrfSafeMethod(method) {
+    // these HTTP methods do not require CSRF protection
+    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+}
+$.ajaxSetup({
+    beforeSend: function(xhr, settings) {
+        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+            xhr.setRequestHeader("X-CSRFToken", csrftoken);
+        }
+    }
+});
+
+		$(".save_to_payee_list").click(function(){
+
+			function add_new_payee_validator(){
+				return true;
+			}
+
+			if(add_new_payee_validator()){
+				console.log($("#id_toName").val());
+				console.log($("#id_toIban").val());
+				console.log($("#id_toSortCode").val());
+            }
+
+            $.ajax({
+                url: "{% url 'savedpay' %}",
+                dataType: 'json',
+                type: "POST",
+                headers: {
+                    "Authorization": "token b256e4e9309879cf7eeff0d22843eede85b0ac52"
+                },
+
+                "csrfmiddlewaretoken": csrftoken,
+
+                success: function (data){
+                    alert('Thanks for your comment! ' + data);
+                }
+            });
+
+         });
+
+
+    });
+
+</script>
+
+{% endblock %}

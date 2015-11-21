@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block 'get_saved_money' %}
+    <div class="col-md-12 white_background">
+
+
+
+        <div class="col-md-12">
+            <h1>Items & Price</h1>
+            {% for item in wishlist %}
+                <p>
+                    {% if item.price < saved %} <a class="budget_setup_link" href="{% url 'mark_wishlist_purchased' item.pk %}"><span class="label label-success">Mark for purchase</span></a>{% endif %}
+                    {{item.title}} : &pound;  {{item.price}}
+                </p>
+            {% endfor %}
+        </div>
+        <h1 style="padding-left:15px;margin-top:6px; font-size:1.5em; color:#2fb582;">You have saved &pound;{{saved}} so far</h1>
+    </div>
+{% endblock %}

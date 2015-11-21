@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block 'wishlist' %}
+<div class="col-md-12 white_background">
+    {% for item in wishlistItems %}
+        <p>{{item}}</p>
+    {% endfor %}    
+</div>
+
+{% endblock %}

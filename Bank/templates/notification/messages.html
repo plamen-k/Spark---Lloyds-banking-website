@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block 'allMessages' %}
+	
+	<div class="col-md-12 white_background">
+	{% for message in messages %}
+
+		<div class="col-md-1 all-messages-glyph-container">
+			
+			<span class="{% if message.level == 0 %}  glyphicon glyphicon-flag
+									{% elif message.level == 1 %}  glyphicon glyphicon-ok
+									{% elif message.level == 2 %} glyphicon glyphicon-warning-sign
+									{% elif message.level == 3 %} glyphicon glyphicon-fire
+									{% else %} ? 
+									{% endif %} "></span>
+
+		</div>
+		<div class="col-md-11">
+			<h1><a href="{% url 'fullMessage' message.pk %}">{{message.title}}</a></h1>
+			<p>{{message.text|truncatechars:200}}</p>
+			<p>{{message.theDate}}</p>
+			<hr/>
+		</div>
+	{% endfor %}
+	</div>
+
+{% endblock %}

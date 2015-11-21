@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block 'map_finder' %}
+<!--sample from http://stackoverflow.com/questions/3059044/google-maps-js-api-v3-simple-multiple-marker-example -->
+<div class="col-md-12 white_background">
+
+  <script src="http://maps.google.com/maps/api/js?sensor=false"
+          type="text/javascript"></script>
+
+  <div id="map" style="width: 100%; height: 500px;"></div>
+
+      <script type="text/javascript">
+        var locations = [
+          ['Lloyds TSB Bank PLC', 55.007295, -1.578737, 4],
+          ['Lloyds TSB Bank PLC', 54.992525, -1.603800, 5],
+          ['Lloyds TSB Bank PLC', 54.987306, -1.577536, 3],
+          ['Lloyds TSB Bank PLC', 54.977258, -1.579424, 2],
+          ['Lloyds TSB Bank', 54.967602, -1.616160, 1],
+          ['Lloyds TSB Bank', 54.963464, -1.602942, 1],
+          ['Lloyds TSB Bank', 54.964942, -1.711947, 1],
+        ];
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 12,
+          center: new google.maps.LatLng(54.9909497, -1.6132414),
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        });
+
+        var infowindow = new google.maps.InfoWindow();
+
+        var marker, i;
+
+        for (i = 0; i < locations.length; i++) {
+          marker = new google.maps.Marker({
+            position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+            map: map
+          });
+
+          google.maps.event.addListener(marker, 'click', (function(marker, i) {
+            return function() {
+              infowindow.setContent(locations[i][0]);
+              infowindow.open(map, marker);
+            }
+          })(marker, i));
+        }
+      </script>
+    </div>
+</div>
+
+{% endblock %}

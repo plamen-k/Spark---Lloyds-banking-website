@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block 'add_budget_category' %}
+<div class="col-md-12 white_background">
+<h1>Add category</h1>
+  {% if formError %}
+  <div class="alert alert-danger " role="alert">
+  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+  <span class="sr-only">Error:</span>
+      {% for i in formError %}
+        {{i}}
+      {% endfor %}
+  </div>
+
+  {% endif %}
+  <form action="{% url 'add_category' %}" method="POST">
+    {% csrf_token %}
+
+    {{form.as_p}}
+    <input type="submit" name="name" value="Add category">
+  </form>
+
+</div>
+{% endblock %}

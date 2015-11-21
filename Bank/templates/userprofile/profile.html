@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block 'personal' %}
+
+	{% if user.is_authenticated %}
+
+
+<div class="col-md-12 white_background">
+	<h1>Welcome, {{user.first_name}}</h1>
+
+	<div class="col-md-9">
+
+		<div class="btn-group">
+	  <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+	    Get statements for  <span class="caret"></span>
+	  </button>
+	  <ul class="dropdown-menu dropdown_profile" role="menu">
+	    {% for account in accounts %}
+	    	<li><a href="{% url 'statement' account.pk %}">{{account.accountName}}</a></li>
+	    {% endfor %}
+	  </ul>
+	</div>
+
+		<table class="col-md-12">
+		<th>Your accounts</th>
+		<tr class="green_table">
+
+			<td>Account</td>
+			<td>Number</td>
+			<td>Balance</td>
+		</tr>
+
+			{% for account in accounts %}
+			<tr {% if forloop.counter0|divisibleby:2 %} class="one_off" {% endif %}>
+				<td><p class="margin_left_profile">{{account.accountName}} <a href="{% url 'change_account_name' account.pk %}">[rename]</a></p></td>
+				<td><p>{{account}}</p></td> <!-- the account model has a default to string method that returns formatted account number -->
+				<td><p>{{account.amount}}</p></td>
+				<td><p>{{account.balance}}</p></td>
+			</tr>
+			{% endfor %}<p>
+
+		</table>
+
+			<p>Total money: ${{totalAmount}}</p>
+
+			{% else %}
+			<a href="{% url 'my_login' %}">Login</a>
+
+			{% endif %}
+
+		<table class="col-md-12">
+			<th>Outgoing Transactions</th>
+			<tr class="green_table">
+
+				<td>Date</td>
+				<td>To</td>
+				<td>Description</td>
+				<td>Amount</td>
+				<td>Balance</td>
+			</tr>
+
+				{% for transaction in outgoing %}
+				<tr {% if forloop.counter0|divisibleby:2 %} class="one_off" {% endif %}>
+					<td><p class="margin_left_profile">{{transaction.theDate}}</p></td>
+					<td><p>{{transaction.toName}}</p></td>
+					<td><p>{{transaction.description}}</p></td>
+					<td><p>{{transaction.amount}}</p></td>
+					<td><p>{{transaction.balance}}</p></td>
+				</tr>
+				{% endfor %}<p>
+		</table>
+
+		<table class="col-md-12">
+			<th>Incoming Transactions</th>
+			<tr class="green_table">
+				<td>Date</td>
+				<td>From</td>
+				<td>Description</td>
+				<td>Amount</td>
+				<td>Balance</td>
+			</tr>
+				{% for transaction in incoming %}
+				<tr {% if forloop.counter0|divisibleby:2 %} class="one_off" {% endif %}>
+
+					<td><p class="margin_left_profile">{{transaction.theDate}}</p></td>
+					<td><p>{{transaction.fromName}}</p></td>
+					<td><p>{{transaction.description}}</p></td>
+					<td><p>{{transaction.amount}}</p></td>
+					<td><p>{{transaction.balance}}</p></td>
+				</tr>
+				{% endfor %}<p>
+		</table>
+	</div>
+	<div class="col-md-3 profile_side_image">
+		<img class="profile_image" src="{% static 'images/College-Student-Discounts.jpg' %}"/>
+		<p class="pull-right">We are putting <span class="blue_text">you</span> first !</p>
+		<button type="button" class="col-md-12 btn btn-success">
+	   	<a href="{% url 'sendMoney' %}">Make a payment</a>
+	  </button>
+	</div>
+</div>
+{% endblock %}

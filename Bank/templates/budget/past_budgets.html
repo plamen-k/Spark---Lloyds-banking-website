@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block 'past_budgets'  %}
+   <div class="col-md-12 white_background">
+        {% for budget in budgets %}
+            <a href="{% url 'single_budget_view' budget.pk %}">{{budget}}</a><br/>
+        {% endfor %}
+    </div>
+{% endblock %}

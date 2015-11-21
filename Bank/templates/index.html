@@ -1,0 +1,186 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load custom_templates %}
+{% block 'index' %}
+
+<div class="col-md-12 slideshow">
+	<script src="{% static 'js/responsiveslides.min.js'%}"></script>
+	<ul class="rslides">
+		{% for slide in slides %}
+			<li><img src="{% with "static/media/"|addstr:slide.image|addstr:" " as url %}{{url}}{% endwith %}"</li>
+
+		{% endfor %}
+	</ul>
+</div>
+
+<div class="col-md-12 section1">
+	<img src="{% static 'images/cloud_vector.png' %}">
+	<div class="col-md-6 section1_text_container" >
+		{# <h1>A bold step into the unknown</h1> #}
+		<p>A time and place for you to discover your freedom, your independence and yourself. With our Student Account, managing your finances is. <span> Then what would be next ?</span></p>
+	</div>
+	<div class="col-md-6 section1_button_container">
+
+		<button class="section1_button">APPLY NOW</button>
+	</div>
+
+</div>
+<hr/>
+
+<div class="col-md-12 section2">
+	<h1 class="section_heading">What you need to know</h1>
+	
+	<div class="col-md-12">
+		<div class="col-md-6 planned_container">
+			<p class="pull-right">PLANNED OVERDRAFT</p></div> <!-- Lol for the div names -->
+		<div class="col-md-6 unplanned_container"><p>UNPLANNED OVERDRAFT</p></div>
+	</div>
+	
+	<div class="col-md-1 overdraft_chart" style="background:#231F20;color:white">
+		<h2>&pound;0</h2>
+		<p>Account in credit</p>
+	</div>
+
+	<div class="col-md-2 overdraft_chart" style="background:#231F20;color:white">
+		<h2>-&pound;1,500</h2>
+		<p>Interest and fee free</p>
+	</div>
+
+	<div class="col-md-3 overdraft_chart" style="background:#2fb582;color:white">
+		<h2>-&pound;1,800</h2>
+		<p>&pound;6 Monthly Overdraft Usage Fee</p>
+		<p>Interest on overdraft usage between &pound;1,500 and &pound1,800</p>
+	</div>
+
+	<div class="col-md-3 overdraft_chart" style="background:#2fb582;color:white">
+		<h2>-&pound;1,810</h2>
+		<p>&pound;10 buffer</p>
+		<p>No additional fees or interest</p>
+	</div>
+
+	<div class="col-md-3 overdraft_chart" style="background:#1d3922;color:white">
+		<p>Either a &pound;5 or a &pound; Daily Fee</p>
+		<p>Interest on amount over &pound;1,800</p>
+	</div>
+
+	<div class="col-md-12">
+		<h2 class="changed_font_comic">This means that if you borrow more than&pound;1,500 you will be charged a monthly fee and interest.</h2>
+	</div>
+
+</div>
+
+
+<hr/>
+<div class="col-md-12 section3">
+	<h1 class="section_heading">Your options</h1>
+	<div class="col-md-9 section3_left_column">
+		<img src="{% static 'images/calc.jpg' %} ">
+	</div>
+	<div class="col-md-3 section3_right_column">
+	<p>Get the flexibility you need... <br/><span>Right Now ! <br/>Really !</span></p></div>
+</div>
+
+<div class="col-md-12 services">
+	<h1>Our services include <span class="line_styler"></span></h1>
+
+	<div class="col-md-12 service_container">
+	{% for service in services %}
+
+		<div class="col-md-3 service">
+			<div class="inner_service">
+				<div class="service_head">
+					<span class="glyphicon glyphicon-{{service.thumbnail}}"></span>
+					<a class="services_title" href="{% url 'service' service.slug %}" >{{service.title|truncatechars:'60'}}</a>
+				</div>
+				<div class="service_body">
+					<p>
+						{{service.body|safe|truncatechars:'360'}}
+					</p>
+						<a href="{% url 'service' service.slug %}">Read more</a>
+
+				</div>
+			</div>
+		</div>
+
+	{% endfor %}
+
+	</div>
+
+	
+	<div class="col-md-12 our_family">
+		<h1>Our Family</h1>
+
+		<p class="people_names"></p>
+	</div>
+
+	<div class="col-md-12 person_container">
+		<div class="col-md-12 pull-right information_half" style="padding-right:0px">
+			<div class="text_container col-md-6 pull-right">
+				<h1 class="story_description"></h1>
+				<hr/>
+				<p class="story_content"></p>
+			<a class="story_link" href="">Read More</a>
+			</div>
+		</div>
+
+	</div>
+
+	<div class="col-md-12 additional">
+		<p><a href="{% url 'student_account' %}">Student Account</a>&nbsp&nbsp<a href="{% url 'graduate_account' %}">Graduate Account</a>&nbsp&nbsp<a href="{% url 'budgeting_info' %}">About Budgeting</a></p>
+	</div>
+
+</div>
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+	// endclick events
+
+	function getUserStories(){ // this is an ajax request that returns all the UserStory objects
+		var result =	$.ajax({
+			url: "{% url 'userStories' %}",
+			dataType: 'json',
+			async: false,
+		}); 	return eval(result.responseText);
+	}
+
+	function changeStory(id, data){ // event is triggered when a link to a user story is triggered and is ment to switch the slide to that story
+		if (data.length == 0 ){
+			$(".our_family, .person_container").hide();
+			return -1;
+		}
+		return function(){
+			$(".people_names > a").removeClass('selected_person');
+			$(".story"+id).addClass("selected_person");  
+			// $(".person_container").css("background-image", "url(/media/"+ data[id].fields.image +")");
+			$(".person_container").css("background-image", "{% with 'static/media/'|addstr:'data[id].fields.image'|addstr:' ' as url %}{{url}}{% endwith %}");
+			$(".text_container > h1").html(data[id].fields.title.substring(0,100));
+			$(".story_content").html(data[id].fields.body.substring(0,600));
+			$(".story_link").attr('href', '/info/story/'+data[id].fields.slug);
+		}
+	}
+
+	data = getUserStories();
+	data = $.parseJSON(data);
+	for(var i=0;i<data.length;i++){
+		$(".people_names").append("<a class='story"+i+"'>"+data[i].fields.name+"</a>");
+	}
+
+	changeStory(0, data)(); // initalisez the story and executes it
+	// not elegant but it works
+
+	for (var i = 0; i < data.length; i++) {
+		$(".story"+i).click(changeStory(i, data));
+	};
+
+	// slider js
+	$(function() {
+		$(".rslides").responsiveSlides({
+			speed: 1000,            // Integer: Speed of the transition, in milliseconds
+		});
+	});
+});
+
+</script>
+
+{% endblock %}

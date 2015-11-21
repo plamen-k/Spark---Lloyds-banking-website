@@ -1,0 +1,842 @@
+# Code written by Plamen Kolev
+
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+@import url(http://fonts.googleapis.com/css?family=Noto+Sans);
+
+body{
+  background-image: url("../images/p5.png");
+  max-width:1280px;
+  min-width:200px;
+  margin:auto;
+}
+
+h1, p, span{
+  font-family: 'Open Sans', sans-serif;
+}
+
+
+p, span{
+  font-size:1.1em;
+}
+
+a{
+  color:#006a4d;
+}
+
+h1{
+  font-size:2em;
+}
+
+a:hover{
+  text-decoration: none;
+}
+
+.col-md-12 > h1{
+  font-size:3em;
+  margin-top:50px;
+  /*text-align: center;*/
+}
+
+/* == Body of new menu */
+
+.menu{
+  background-color: #2fb582;
+}
+
+.menu_links{
+  font-family: 'Source Sans Pro', sans-serif;
+  text-decoration: none;
+  color:white;
+  font-size:1.3em;
+  display:inline-block;
+  padding:10px;
+  /*margin:15px;*/
+  padding-top:0px;
+  margin-top:0px;
+  text-align: center;
+  margin-right:20px;
+}
+
+.menu_links_glyphicons{
+  text-decoration: none;
+  color:white;
+  font-size:1.3em;
+  display:inline-block;
+  padding:10px;
+  /*margin:15px;*/
+  padding-top:0px;
+  margin-top:0px;
+  text-align: center;
+  margin-right:20px;
+}
+
+
+
+.notification_bell{
+  color:white;
+  font-size:1.3em;
+  display:inline-block;
+  padding:10px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.menu a:hover{
+  display:inline-block;
+  color:#1d3922;
+  /*padding:10px;*/
+  text-decoration: none;
+
+  /*text-align: center;*/
+}
+
+#selected_link{
+  padding:10px;
+    display:inline-block;
+  background-color:#1d3922;
+  color:white;
+  text-decoration: none;
+}
+
+#settings{
+  margin-top:15px;
+}
+
+#settings:hover{
+  text-decoration: none;
+}
+
+.lloyds_logo img{
+  background-color:white;
+  padding:10px;
+  max-height:160px;
+  margin-top:0px;
+}
+
+.lloyds_logo{
+  margin-top:10px;
+  margin-bottom:10px;
+  padding:0px;
+}
+
+#logo_tagline{
+  display: inline-block;
+  font-size:1.8em;
+  position: relative;
+  margin-left:30px;
+  color:#2fb582;
+  margin-top:5px;
+  top:15px;
+}
+
+/* from responsiveslides.com documentation */
+
+.rslides {
+  position: relative;
+  list-style: none;
+  overflow: hidden;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  max-height:500px;
+  }
+
+.rslides li {
+  -webkit-backface-visibility: hidden;
+  position: absolute;
+  display: none;
+  width: 100%;
+  left: 0;
+  top: 0;
+  }
+
+.rslides li:first-child {
+  position: relative;
+  display: block;
+  float: left;
+  }
+
+.rslides img {
+  display: block;
+  height: auto;
+  float: left;
+  width: 100%;
+  border: 0;
+}
+
+.slideshow {
+  padding:0px;
+}
+ /* end */
+
+
+ /* index section1 css */
+
+ .section1{
+   position: relative;
+   margin-top:20px;
+   margin-bottom:20px;
+   background-color:#2fb582;
+ }
+
+.section1 p{
+  font-size:1.9em;
+}
+
+.section1_text_container{
+  padding:20px;
+}
+
+.section1 span{
+  color:white;
+}
+
+.section1_button_container{
+  text-align: center;
+  padding-bottom:20px;
+
+}
+
+.section1_button{
+   font-family: 'Open Sans', sans-serif;
+  color:white;
+  background-color:#9edcaa;
+  box-shadow:none !important;
+  border-radius: 4px;
+  outline: none;
+  padding:20px 100px 20px 100px;
+  font-size:2em;
+  border:0;
+  margin-top:80px;
+}
+
+.section1 img{
+  position: absolute;
+  top:0;
+  right:0;
+}
+
+/* section2 */
+
+.section_heading{
+  text-align: center;
+}
+
+.graph_container{
+  text-align: center;
+  margin-top:30px;
+  padding:20px;
+}
+
+.graph_container > img{
+  width:100%;
+  max-width:1000px;
+}
+
+.section2, .section3{
+  background: white;
+}
+
+.overdraft_chart{
+  min-height: 240px;
+  padding:10px;
+  border:5px solid white;
+}
+
+.overdraft_chart p, .changed_font_comic{
+  font-size:1.3em;
+  font-family: 'Noto Sans', sans-serif;
+}
+
+.changed_font_comic{
+  font-size:1.4em;
+  text-align: center;
+}
+
+.planned_container{
+  /*background-color:#2fb582;*/
+  font-size:1.3em;
+  padding-top:10px;
+  border-right:5px solid #2FB582;
+}
+
+.unplanned_container{
+  /*background-color:#1d3922;*/
+  font-size:1.3em;
+  padding-top:10px;
+}
+
+
+/* section 3*/
+
+.section3{
+  border-top:1px solid #eee;
+}
+
+.section3_left_column, .section3_right_column{
+  margin-top:10px;
+  font-family:"Open Sans";
+}
+
+.section3_left_column{
+  overflow: hidden;
+}
+
+.section3_left_column > img{
+  width:100%;
+}
+
+.section3_right_column{
+  font-size:2.5em;
+  padding-left:10px;
+}
+
+.section3_right_column span{
+  color:#2fb582;
+}
+
+.line_styler{
+  display: inline-block;
+  background: #2fb582;
+  width: 42%;
+  height: 2px;
+}
+
+/*services css*/
+.service{
+  margin-top:20px;
+}
+
+.services > h1 {
+  text-align: left
+}
+
+.services_title{
+  display: block;
+  color:white;
+}
+
+.inner_service{
+  border:1px solid #eee;
+  box-shadow: 0px 2px 1px #999;
+
+}
+
+.service_container{
+  background:#f0f0f0;
+}
+
+.service_head{
+  text-align:center;
+  background-color:#2fb582;
+  font-size:1.5em;
+  padding:20px 10px 10px 10px;
+  color:white;
+  min-height: 160px
+
+}
+
+.service_head .glyphicon{
+  color:white;
+}
+
+.service_body{
+  background: white;
+  padding:10px;
+  min-height:300px;
+  overflow:hidden;
+}
+
+.people_names{
+  font-size:1.2em;
+}
+
+.people_names > a{
+  margin-right: 15px;
+}
+
+.selected_person{
+  border-bottom:solid 3px #2fb582;
+}
+
+.person_container{
+  padding-right:0px;
+  background-size:100%;
+  background-repeat: no-repeat;
+  height:500px;
+  overflow: hidden;
+}
+
+.information_half{
+  /* generated with http://www.colorzilla.com/gradient-editor/*/
+background: -moz-linear-gradient(left,  rgba(255,255,255,0) 0%, rgba(255,255,255,0) 2%, rgba(255,255,255,0.77) 48%, rgba(255,255,255,1) 62%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(255,255,255,0)), color-stop(2%,rgba(255,255,255,0)), color-stop(48%,rgba(255,255,255,0.77)), color-stop(62%,rgba(255,255,255,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(left,  rgba(255,255,255,0) 0%,rgba(255,255,255,0) 2%,rgba(255,255,255,0.77) 48%,rgba(255,255,255,1) 62%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(left,  rgba(255,255,255,0) 0%,rgba(255,255,255,0) 2%,rgba(255,255,255,0.77) 48%,rgba(255,255,255,1) 62%); /* Opera 11.10+ */
+background: -ms-linear-gradient(left,  rgba(255,255,255,0) 0%,rgba(255,255,255,0) 2%,rgba(255,255,255,0.77) 48%,rgba(255,255,255,1) 62%); /* IE10+ */
+background: linear-gradient(to right,  rgba(255,255,255,0) 0%,rgba(255,255,255,0) 2%,rgba(255,255,255,0.77) 48%,rgba(255,255,255,1) 62%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=1 ); /* IE6-9 */
+  height:500px;
+}
+
+.text_container{
+  margin:10px 20px 0px 0px;
+  /*background:white;*/
+  padding-left:30px;
+}
+
+.text_container > a{
+  margin-right:30px;
+}
+
+.additional{
+  margin-top:30px;
+  text-align: center;
+  background:#eee;
+  font-size:1.4em;
+  padding:10px;
+}
+
+.additional a{
+    margin-right:25px;
+}
+
+/* css for the tables in profile section*/
+
+.white_background{
+  background: white;
+  padding:10px;
+}
+
+.profile_image{
+  width: 100%;
+  border: 1px solid #D7D7D7;
+  padding: 5px;
+  border-radius: 6px;
+}
+
+.open>.dropdown-menu{
+  margin-left:255px
+}
+
+.open>.dropdown_profile{
+  margin:0px;
+}
+
+.profile_side_image{
+  margin-top:60px;
+}
+
+.blue_text{
+  color:#006B47;
+}
+
+.green_table{
+  background: #2FB582;
+  color:white;
+}
+
+.marginated{
+  margin-top:30px;
+}
+
+.green_table td{
+  padding:5px;
+}
+
+.one_off{
+  background: #ecffee;
+}
+
+table td p{
+  font-size:1em;
+  margin-top: 9px;
+  font-size: 1.2em;
+}
+
+.margin_left_profile{
+  margin-left:10px;
+}
+
+table{
+  border-bottom: 2px solid #2FB582;
+  border-radius: 4px;
+  /*box-shadow:  -1px 1px 1px #888888;*/
+  margin-bottom:5px;
+}
+
+.btn > a{
+  color:white;
+}
+
+.lloyds_logo_container{
+  margin-top:20px;
+}
+
+.inline{
+  display:inline-block;
+}
+
+.lloyds_logo_container img{
+  background: white;
+}
+
+.nav{
+  background: #00853E;
+}
+
+.nav a{
+  color:white;
+}
+
+.footer{
+  padding-left:0px;
+  padding-right:0px;
+}
+
+.legal{
+  margin-top:50px;
+  border-top:1px solid #ccc;
+  background: white;
+  padding:50px;
+}
+
+.triangle_arrow{
+  background-image:url("../images/triangle.png");
+  /*background-color:red;*/
+  background-repeat: no-repeat;
+  display:none;
+  text-align: center;
+  height:20px;
+  width:40px;
+  margin:auto;
+}
+/* notification css here */
+.notification_panel{
+  padding:0px;
+  display: none;
+  margin:auto;
+  margin-top:-10px;
+  position: absolute;
+  z-index: 111;
+}
+
+.shadow_wrap{
+  margin-top:10px;
+  /* below taken from http://css3gen.com/box-shadow/*/
+  -webkit-box-shadow: 4px 4px 19px 0px rgba(50, 50, 50, 0.73);
+  -moz-box-shadow:    4px 4px 19px 0px rgba(50, 50, 50, 0.73);
+  box-shadow:         4px 4px 19px 0px rgba(50, 50, 50, 0.73);
+  /* endtaken */
+}
+
+.notification_scroll{
+  border:solid 5px #2FB582;
+  max-height:400px;
+  overflow:auto;
+  background:white;
+}
+
+.notification_view_all{
+  background:#2FB582;
+  text-align: center;
+  margin:0px;
+}
+
+.notification_view_all a{
+  color:white;
+
+}
+
+.notif_icon{
+  text-align: center;
+}
+
+
+.notif_icon span{
+  vertical-align: middle;
+  font-size:2em;
+  margin-top:20px;
+}
+
+.notif_content h1{
+  margin-top:5px;
+  font-size:1.5em;
+}
+
+.notif_content{
+  /*min-height:40px;*/
+}
+
+.notif_button span{
+  margin-top:10px;
+}
+
+.notification_cell{
+  background:white;
+  border-bottom:1px solid #eee;
+  padding:8px;
+}
+
+.notif_close{
+  text-align: center;
+}
+
+.glyphicon-ok{
+  color:#2eb07e;
+}
+
+.glyphicon-warning-sign{
+  color:#ec8731;
+}
+
+.glyphicon-flag{
+  color:#0799ff;
+
+}
+
+.glyphicon-fire{
+  color:#ff231d;
+
+}
+
+.new_notifications{
+  color:#eee;
+}
+
+.grayed, .grayed a, .grayde .glyphicon-flag{
+  color:#999;
+}
+
+.full-view-glyph{
+  font-size:2em;
+  margin:10px;
+}
+
+.all-messages-glyph-container{
+  margin-top:30px;
+  text-align: center;
+  font-size:3em;
+}
+
+
+/* =========== payment form css */
+
+.jquery_pressed_handler_show{
+  background:#2FB582;
+}
+
+.payee_list_container{
+  background: #F4F4F4;
+
+}
+
+.pay_later_radio_button_date_field{
+  display: none;
+}
+
+input, select, textarea{
+  border:none;
+  background:#efefef;
+  min-height:30px;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size:1.1em;
+}
+
+#id_title{
+    width:100%;
+}
+
+#id_price{
+    width:100%;
+}
+
+#id_status{
+    width:100%;
+}
+
+#id_limit{
+    width:100%;
+}
+
+
+input[type="radio"]{
+   min-height:10px;
+}
+
+.transaction_submit_button{
+  background: #2FB582;
+}
+
+.transaction_submit_button:hover{
+  background: #1D3922;
+  /*border:2px solid #2FB582;*/
+}
+
+input[type="submit"]{
+  background: #2FB582;
+  color:white;
+}
+
+.payment_fields_div_container{
+  margin-top:10px;
+}
+
+.payment_fields_div_container span{
+  text-align: right;
+}
+
+.payment_fields_div_container input, textarea{
+  padding-left:10px;
+  width:100%;
+  color:#1d3922;
+}
+
+.payment_fields_div_container textarea{
+  padding-left:10px;
+  height:100px;
+}
+
+.payment_fields_div_container select{
+    width:100%;
+    background:#2FB582;
+    color:white;
+    padding-left:10px;
+}
+
+.payment_fields_div_container select option{
+  background:white;
+  color:black;
+}
+
+.payment_fields_div_container option:hover{
+  background:red;
+}
+
+.payment_form{
+  margin-bottom:100px;
+}
+
+/* payment end*/
+
+
+/* ========== budgeting css  */
+.budget_setup_link span{
+	font-size:1em;
+}
+
+
+/* budget bar css*/
+.spending_bar{
+  width:100%;
+  height:40px;
+  /*background:#FF6100;*/
+}
+
+.spending_bar_container table{
+  width:100%;
+}
+
+.spending_bar_container table tr{
+  height:40px;
+
+}
+
+.meme_image_budget{
+  max-width:100%
+}
+
+#smaller_header{
+    font-size:1.5em;
+}
+
+/* meme styling */
+
+.meme{
+    text-align:right;
+    border-left:1px solid #eee;
+    padding:10px;
+}
+
+.meme > img{
+    max-width:320px;
+}
+
+/* userprofile */
+
+.items_purchased_this_month{
+  overflow:scroll;
+  height:340px;
+  border:1px solid #eee;
+}
+
+/* faq style */
+
+.faq_container p{
+  background: #fafafa;
+  padding:10px;
+  border-bottom: 1px solid #ececec;
+}
+
+/* styling for the forms */
+#id_name{
+    width:100%;
+}
+
+#id_email{
+    width:100%;
+}
+/* footer css */
+
+.container h4 a{
+  text-decoration: none;
+  color: white;
+}
+
+.footer {
+  background-color: #2FB582;
+}
+
+.footer hr {
+  display: block;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 1px;
+}
+
+.footer h3 {
+  text-align: center;
+  color: white;
+}
+
+.footer h2 {
+
+  text-align: center;
+  color: #1D3922;
+}
+
+.row {
+
+  padding: 5px;
+}
+
+.footer img.logo {
+
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+
+}
+
+.footer p.legal-text {
+
+  text-align: center;
+  color:white;
+}
+
+
+/*endfooter*/

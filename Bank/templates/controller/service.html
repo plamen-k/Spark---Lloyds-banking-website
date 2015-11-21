@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block 'service' %}
+	
+	<div class="col-md-12">
+			<div class="inner_service">
+				<div class="service_head">
+					<span class="glyphicon glyphicon-{{service.thumbnail}}"></span>
+					<p class="services_title" href="{% url 'service' service.slug %}" >{{service.title}}</p>
+				</div>
+				<div class="service_body">
+					<p>
+						{{service.body|safe}}
+					</p>
+				</div>
+			</div>
+	</div>
+
+{% endblock %}

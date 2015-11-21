@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block 'single_budget_view' %}
+    <div class="col-md-12 white_background">
+        <h1>Budget:{{budget}}</h1>
+        <p>Total allowed: &pound;{{budget.limit}}</p>
+        <p>Total spent:{{spent}}</p>
+        {% for purchase in purchases %}
+            <p>&pound;{{purchase.price}} for {{purchase}}</p>
+        {% endfor %}
+    </div>
+{% endblock %}

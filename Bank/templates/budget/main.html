@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% block 'budget_main' %}
+{% load staticfiles %}
+
+<div class="col-md-12 white_background">
+  {% if currentBudget %}
+  <div class="col-md-8">
+    <h1>Budgeting</h1>
+    <p>
+    <a class="budget_setup_link" href="{% url 'monthly_budget_setup'%}"><span class="label label-success">Setup budget</span></a>
+    <a class="budget_setup_link" href="{% url 'past_budgets'%}"><span class="label label-success">Past budgets</span></a>
+    <a class="budget_setup_link" href="{% url 'add_category'%}"><span class="label label-success">Add category</span></a>
+
+    </p>
+    <p>Budget for {{date}}</p>
+    <p>&pound;{{total}} of &pound;{{currentBudget.limit}} spent</p>
+
+    <!-- shows the categories of budgeting -->
+    {% for category, percentage, spentPerc in categories %}
+      <p>{{category.title}} : {{category.spent}} from {{category.price}}</p>
+    {% endfor %}
+    <hr>
+
+    <!-- <a href="{% url 'add_category' %}">add category</a> -->
+    <h1>Wishlist</h1>
+    <a class="budget_setup_link" href="{% url 'create_wishlist_item' %}"><span class="label label-info">Add to wishlist</span></a>
+    <a class="budget_setup_link" href="{% url 'get_saved_money'%}"><span class="label label-success">Visit wishlist</span></a>
+
+  </div>
+
+
+  <div class="col-md-4 meme">
+      <img class="meme_image_budget" src="{% static meme %}"/>
+  </div>
+
+  <div class="col-md-12 items_purchased_this_month">
+    <h1 id="smaller_header">List of items purchased this month</h1>
+    <a class="budget_setup_link" href="{% url 'budget_add_purchase'%}"><span class="label label-success">Add item</span></a>
+
+    <table class="col-md-12" style="margin-top:10px">
+        <tr>
+            <th>Item</th>
+            <th>Price</th>
+        </tr>
+
+            {% for item in purchases %}
+            <tr {% if forloop.counter0|divisibleby:2 %} style="background:#ececec;" {% endif %}>
+            <td>
+              {{item.description}}
+            </td>
+            <td>
+                &pound;{{item.price}}
+            </td>
+            </tr>
+            {% endfor %}
+
+    </table>
+
+  </div>
+
+  {% else %}
+  <p>
+    <a href="{% url 'monthly_budget_setup' %}">Setup monthly budget</a>
+  </p>
+
+
+  {% endif %}
+    <h1>Money Bar</h1>
+    <table class="col-md-12" style="margin-top:10px;">
+      <tr>
+        {% for category, percent, spentPerc in categories  %}
+
+          <th style="background:{{category.color}};" width={{percent}}%><div class="spending_bar" style="background:#000; width:{{spentPerc}}%;"></div></th>
+
+        {% endfor %}
+      </tr>
+      <tr>
+      {% for category, percent, spentPerc in categories  %}
+        <td valign="bottom">{{category.title}}</td>
+      {% endfor %}
+    </tr>
+    </table>
+</div>
+<div class="col-md-12 white_background">
+  
+</div>
+
+<style>
+    hr{
+        color:#5cb85c;
+        border:1px solid;
+    }
+</style>
+{% endblock %}

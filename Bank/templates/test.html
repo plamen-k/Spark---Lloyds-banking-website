@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script type="text/javascript" src='https://code.jquery.com/jquery-2.1.3.min.js'></script>
+</head>
+<body>
+
+</body>
+</html>
+
+<script type="text/javascript">
+	
+	$(document).ready(function() {
+
+
+	var response = '';
+
+	$.ajax({ 
+		type: "POST",   
+		url: "get-default-token/",  
+		async: false,
+		data: {username: 'root', password: 'toor'},
+		success : function(text){
+			token = text.token;
+			response = token;
+		}, 
+		error: function(xhr, status, error) {
+			alert(xhr.responseText);
+ 		}
+
+	});
+
+	console.log(response);
+
+	// console.log(response);
+	
+	$.ajax({ 
+		type: "GET",   
+		headers: {
+				// 'Authorization':'Basic xxxxxxxxxxxxx',
+				'Authorization': 'Token '+ response,
+		},
+
+		url: "api/outgoing/",  
+		async: false,
+		// data: { CSRF: "asd"},
+		success : function(text){
+			console.log(text)
+		}, error: function(xhr, status, error) {
+		alert(xhr.responseText);
+ }
+
+	});
+
+
+	});
+
+</script>

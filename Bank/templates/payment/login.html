@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block 'login_form' %}
+	<h1>Enter your credentials to continue !</h1>
+	<form style="text-align:center" method="post" action="{% url 'django.contrib.auth.views.login' %}">
+	{% csrf_token %}
+
+		<div class="profile-wrap">
+			<div class="profile-container">
+			<div>
+				</div>
+				<input placeholder="Username" name="username" type="textfield"/>
+				<input placeholder="Password" name="password" type="password"/>
+				<hr/>
+
+				<input type="submit" value="login" />
+				<input type="hidden" name="next" value="{% url 'index' %}" /> 
+			</div>
+		</div>
+	</form>
+
+{% endblock %}
